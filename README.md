@@ -12,7 +12,8 @@ A local trading portfolio dashboard built with Electron, React, TypeScript, Pyth
 - **Portfolio** — Pie chart showing allocation by position, holdings table with unrealised P&L
 - **History** — Filled buy and sell orders, separated into sub-tabs
 - **Insights** — Search any stock, crypto, or ETF and view price trend charts
-- **Journal** — Daily trade diary with structured Good / Bad trade entries, calendar navigation, and auto-save
+- **Journal** — Daily trade diary with structured Good / Bad trade entries, calendar navigation, and manual save. Import trades directly from History to auto-fill symbol, price, and P&L
+- **AI Trade Coach** — Per-trade AI coaching powered by GPT-4o mini. Streams structured feedback: pattern recognition, root cause analysis, a concrete rule to add to your checklist, and a self-awareness score
 - **Privacy mode** — Single button to hide all financial values
 - **IBKR integration** — Connects to Interactive Brokers Client Portal Gateway for live data (requires IBKR Pro)
 
@@ -94,6 +95,33 @@ The Electron window will open automatically.
 
 ---
 
+## AI Trade Coach (optional)
+
+The Journal tab has an **AI Feedback** button on every trade card. It sends your trade details to OpenAI and streams back structured coaching feedback.
+
+> **Requires an OpenAI Platform account with billing enabled.** ChatGPT Plus is a separate product and does not include API access.
+
+### Step 1 — Get an API key
+
+1. Go to **https://platform.openai.com/api-keys**
+2. Sign in → **Create new secret key** → copy it
+3. Add a minimum of $5 credit under **Billing → Add payment method**
+
+Each coaching response costs roughly **$0.001** (less than a tenth of a cent) using `gpt-4o-mini`.
+
+### Step 2 — Add your key
+
+Edit `backend/.env`:
+```
+OPENAI_API_KEY=sk-proj-...your key here...
+```
+
+Restart the backend. The AI Feedback button on each trade card will now return live coaching.
+
+If `OPENAI_API_KEY` is left blank, the button still appears but returns an error message — the rest of the app is unaffected.
+
+---
+
 ## Connecting IBKR Live Data (optional)
 
 The dashboard works fully with mock data by default. To connect your real IBKR account:
@@ -166,7 +194,8 @@ tradedesk/
 │   │       ├── trades.py
 │   │       ├── insights.py
 │   │       ├── ibkr.py        # Status + logout
-│   │       └── diary.py       # Trade journal CRUD
+│   │       ├── diary.py       # Trade journal CRUD
+│   │       └── coach.py       # AI Trade Coach (OpenAI streaming)
 │   ├── requirements.txt
 │   ├── .env.example
 │   └── .env                   # ← not committed, created by you
@@ -211,3 +240,8 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:/opt/homebrew/bin:/usr/bin:/bin
 **Electron window is blank**
 - Make sure the backend is running first on port 8000
 - Check the backend terminal for errors
+
+**AI Coach returns "could not connect"**
+- Check that `OPENAI_API_KEY` is set in `backend/.env`
+- Make sure the backend was restarted after adding the key
+- Verify your OpenAI account has a positive credit balance at https://platform.openai.com/usage
