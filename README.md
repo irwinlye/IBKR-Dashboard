@@ -1,10 +1,11 @@
-# TradeDesk
+# AIO JOURNAL + DASHBOARD
 
 > **macOS only.** This dashboard is built and tested on macOS. Windows/Linux are not supported at this time.
 <img width="1486" height="802" alt="Screenshot 2026-02-14 at 6 39 04 PM" src="https://github.com/user-attachments/assets/437c8241-ccc2-49d4-bc7b-2d44fe078a97" />
 
-A local trading portfolio dashboard built with Electron, React, TypeScript, Python (FastAPI), and PostgreSQL. Connects to Interactive Brokers via the Client Portal Web API for live portfolio and trade data.
 
+I started on this project as I wanted to document my trading journey. Starting off, there are many bad habits such as greedy, overtrading, chasing trades and many more that I want to stop committing, and the only way is to reflect after every trade / every day. Which is why I created this journal so that I can identify these mistakes to slowly stop making the same mistakes.
+This is a local trading portfolio dashboard built with Electron, React, TypeScript, Python (FastAPI), and PostgreSQL. Connects to Interactive Brokers via the Client Portal Web API for live portfolio and trade data.
 ---
 
 ## Features
