@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* ── Design tokens ──────────────────────────────────────────────────────────── */
+@theme {
+  --color-bg-primary:    #080e1a;
+  --color-bg-secondary:  #0c1424;
+  --color-bg-card:       #101828;
+  --color-bg-hover:      #141f30;
+  --color-bg-input:      #0a1120;
+  --color-border:        #1a2840;
+  --color-border-light:  #1e3050;
+  --color-accent:        #7c3aed;
+  --color-accent-light:  #a78bfa;
+  --color-accent-dim:    #2d1b69;
+  --color-text-primary:  #f0f4f8;
+  --color-text-secondary:#8a9ab0;
+  --color-text-muted:    #415070;
+  --color-green:         #10b981;
+  --color-red:           #ef4444;
+  --color-yellow:        #f59e0b;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: #080e1a;
+  color: #f0f4f8;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Scrollbars ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1a2840; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #2d1b69; }
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+h1 { font-size: 20px; font-weight: 700; letter-spacing: -0.4px; color: #f0f4f8; }
+h2 { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; color: #8a9ab0; }
+
+/* ── Utility animations ─────────────────────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Apply fade-in to main content panels */
+main > * {
+  animation: fadeIn 0.2s ease;
+}
+
+/* ── Number inputs: hide spinner arrows ─────────────────────────────────────── */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] { -moz-appearance: textfield; }
+
+/* ── Focus ring ─────────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
