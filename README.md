@@ -5,6 +5,7 @@
 
 
 I started on this project as I wanted to document my trading journey. Starting off, there are many bad habits such as greedy, overtrading, chasing trades and many more that I want to stop committing, and the only way is to reflect after every trade / every day. Which is why I created this journal so that I can identify these mistakes to slowly stop making the same mistakes.
+
 This is a local trading portfolio dashboard built with Electron, React, TypeScript, Python (FastAPI), and PostgreSQL. Connects to Interactive Brokers via the Client Portal Web API for live portfolio and trade data.
 ---
 
